@@ -177,6 +177,12 @@ def update_coordinates(particle_1, particle_2, material, phi_azimuthal, theta, p
     #update angular coordinates of incident particle
     ca, cb, cg = particle_1.dir_cos
     sa = np.sin(np.arccos(ca))
+    # deal with the problem of sa = 0
+    if fabs(sa) < 1e-15
+        particle_1.dir_cos = [1.0 - 1e-10, 1e-10, 1e-10]
+        particle_1.dir_cos /=  np.linalg.norm(particle_1.dir_cos)
+        sa = np.sin(np.arccos(ca))
+
     cphi = np.cos(phi_azimuthal)
     sphi = np.sin(phi_azimuthal)
     cpsi = np.cos(psi)
