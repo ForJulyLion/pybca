@@ -76,6 +76,10 @@ class Particle:
     def cosz(self, cosz_new):
         self.dir_cos[2] = cosz_new
 
+# We may add Atom class to build up  muti-component material, and support cascade collision.
+# Each atom in material has a possibility to knock out with certain knock-on energy trasferred by particle and calculate damage
+# Then atoms can become the next knock-on particles.
+
 class Material:
     def __init__(self, n, m, Z, Es, Eb=0.0):
         self.n = n
